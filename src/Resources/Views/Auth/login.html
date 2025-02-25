@@ -6,50 +6,98 @@
     <title>Đăng Nhập</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
+            background-color: #f0f2f5; /* Màu nền nhẹ nhàng */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Chiều cao toàn bộ viewport */
         }
+
         .form-container {
             max-width: 400px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff; /* Nền trắng cho form */
+            border-radius: 15px; /* Bo góc cho form */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+            text-align: center; /* Canh giữa nội dung */
         }
+
+        h1 {
+            color: #333; /* Màu chữ tối */
+            margin-bottom: 20px;
+        }
+
         .form-label {
             margin-bottom: 5px;
+            font-weight: bold; /* Chữ đậm cho nhãn */
+            color: #555; /* Màu chữ nhãn */
+            text-align: left; /* Canh trái */
         }
+
         .form-input {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            width: 100%; /* Đầy chiều rộng */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd; /* Màu viền nhạt */
+            border-radius: 8px; /* Bo góc cho input */
+            transition: border-color 0.3s; /* Hiệu ứng chuyển màu viền */
         }
+
+        .form-input:focus {
+            border-color: #007bff; /* Màu viền khi focus */
+            outline: none; /* Loại bỏ viền mặc định */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Đổ bóng nhẹ khi focus */
+        }
+
         .form-button {
-            padding: 10px;
-            background-color: #007bff;
+            padding: 12px;
+            background-color: #007bff; /* Màu nền nút */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 18px; /* Kích thước chữ nút */
+            width: 100%; /* Đầy chiều rộng */
+            transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển màu và co giãn */
         }
+
         .form-button:hover {
-            background-color: #0056b3;
+            background-color: #0056b3; /* Màu nền khi hover */
+            transform: translateY(-2px); /* Hiệu ứng nâng lên khi hover */
+        }
+
+        .form-button:active {
+            transform: translateY(0); /* Trở về vị trí khi nhấn nút */
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777; /* Màu chữ nhạt */
         }
     </style>
 </head>
 <body>
-    <h1>Đăng Nhập</h1>
-    <form id="loginForm" class="form-container">
-        <label for="email" class="form-label">Email:</label>
-        <input type="email" id="email" name="email" class="form-input" required>
+    <div class="form-container">
+        <h1>Đăng Nhập</h1>
+        <form id="loginForm">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-input" required>
 
-        <label for="password" class="form-label">Mật khẩu:</label>
-        <input type="password" id="password" name="password" class="form-input" required>
+            <label for="password" class="form-label">Mật khẩu:</label>
+            <input type="password" id="password" name="password" class="form-input" required>
 
-        <button type="submit" class="form-button">Đăng Nhập</button>
-    </form>
+            <button type="submit" class="form-button">Đăng Nhập</button>
+        </form>
+        <div class="footer">
+            <p>Bạn chưa có tài khoản? <a href="/auth/register">Đăng ký</a></p>
+        </div>
+    </div>
 
-    <script src="/Router/login.js"></script> <!-- Đường dẫn đến login.js -->
+    <script src="/Js/login.js"></script> <!-- Đường dẫn đến login.js -->
 </body>
 </html>

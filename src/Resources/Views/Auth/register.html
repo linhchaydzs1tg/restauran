@@ -6,84 +6,106 @@
     <title>Đăng Ký</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 20px;
-        }
-        form {
-            max-width: 400px;
-            margin: auto;
+            background-color: #f0f2f5; /* Màu nền nhẹ nhàng */
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Chiều cao toàn bộ viewport */
         }
-        label {
+
+        .form-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: #ffffff; /* Nền trắng cho form */
+            border-radius: 15px; /* Bo góc cho form */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+            text-align: center; /* Canh giữa nội dung */
+        }
+
+        h1 {
+            color: #333; /* Màu chữ tối */
+            margin-bottom: 20px;
+        }
+
+        .form-label {
             margin-bottom: 5px;
+            font-weight: bold; /* Chữ đậm cho nhãn */
+            color: #555; /* Màu chữ nhãn */
+            text-align: left; /* Canh trái */
         }
-        input {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+
+        .form-input {
+            width: 100%; /* Đầy chiều rộng */
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd; /* Màu viền nhạt */
+            border-radius: 8px; /* Bo góc cho input */
+            transition: border-color 0.3s; /* Hiệu ứng chuyển màu viền */
         }
-        button {
-            padding: 10px;
-            background-color: #28a745;
+
+        .form-input:focus {
+            border-color: #007bff; /* Màu viền khi focus */
+            outline: none; /* Loại bỏ viền mặc định */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Đổ bóng nhẹ khi focus */
+        }
+
+        .form-button {
+            padding: 12px;
+            background-color: #28a745; /* Màu nền nút */
             color: white;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            font-size: 18px; /* Kích thước chữ nút */
+            width: 100%; /* Đầy chiều rộng */
+            transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng chuyển màu và co giãn */
         }
-        button:hover {
-            background-color: #218838;
+
+        .form-button:hover {
+            background-color: #218838; /* Màu nền khi hover */
+            transform: translateY(-2px); /* Hiệu ứng nâng lên khi hover */
+        }
+
+        .form-button:active {
+            transform: translateY(0); /* Trở về vị trí khi nhấn nút */
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777; /* Màu chữ nhạt */
         }
     </style>
 </head>
 <body>
-    <h1>Đăng Ký</h1>
-    <form id="registerForm">
-        <label for="username">Tên người dùng:</label>
-        <input type="text" id="username" name="username" required>
+    <div class="form-container">
+        <h1>Đăng Ký</h1>
+        <form id="registerForm">
+            <label for="username" class="form-label">Tên người dùng:</label>
+            <input type="text" id="username" name="username" class="form-input" required>
 
-        <label for="password">Mật khẩu:</label>
-        <input type="password" id="password" name="password" required>
+            <label for="password" class="form-label">Mật khẩu:</label>
+            <input type="password" id="password" name="password" class="form-input" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-input" required>
 
-        <label for="phone">Số điện thoại:</label>
-        <input type="tel" id="phone" name="phone" required>
+            <label for="phone" class="form-label">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" class="form-input" required>
 
-        <label for="surname">Họ:</label>
-        <input type="text" id="surname" name="surname" required>
+            <label for="surname" class="form-label">Họ:</label>
+            <input type="text" id="surname" name="surname" class="form-input" required>
 
-        <button type="submit">Đăng Ký</button>
-    </form>
-
-    <script>
-        document.getElementById("registerForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-
-            try {
-                const response = await fetch('/api/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                const result = await response.json();
-                alert(result.message);
-                if (response.ok) {
-                    window.location.href = '/login.html'; // Redirect to login page
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Đã xảy ra lỗi, vui lòng thử lại!');
-            }
-        });
-    </script>
+            <button type="submit" class="form-button">Đăng Ký</button>
+        </form>
+        <div class="footer">
+            <p>Bạn đã có tài khoản? <a href="/auth/login">Đăng nhập</a></p>
+        </div>
+    </div>
+    <script src="/Js/register.js"></script> 
 </body>
 </html>

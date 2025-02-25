@@ -7,7 +7,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     try {
         // Gửi yêu cầu đăng nhập đến server
-        const response = await fetch('/api/login', {
+        const response = await fetch('/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,7 +21,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
         
         // Kiểm tra nếu đăng nhập thành công
         if (response.ok) {
-            window.location.href = '/home.hbs'; // Điều hướng đến trang dashboard hoặc trang chính
+            window.location.href = '/'; // Điều hướng đến trang dashboard hoặc trang chính
         }
     } catch (error) {
         console.error('Error:', error);
